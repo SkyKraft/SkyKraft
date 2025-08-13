@@ -1,67 +1,53 @@
-# 🚁 SKYKRAFT - The Ultimate Drone Pilot Aggregator Platform
+# SkyKraft - The Ultimate Drone Pilot Aggregator Platform
 
-**SKYKRAFT** is a cutting-edge Flutter application that revolutionizes how clients connect with professional drone pilots. Built with modern architecture and real-time capabilities, it provides the most comprehensive drone pilot discovery and booking experience.
+[![Flutter](https://img.shields.io/badge/Flutter-3.7.2-blue.svg)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Dart-3.7.2-blue.svg)](https://dart.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## ✨ Key Features
+## 🚁 About SkyKraft
 
-### 🎯 **Advanced Pilot Discovery**
-- **Real-time Search & Filtering**: Find pilots by specialization, location, rating, and availability
-- **Smart Matching Algorithm**: AI-powered pilot recommendations based on project requirements
-- **Geolocation Services**: Discover pilots near your location with distance-based filtering
-- **Premium Pilot Badges**: Identify verified, high-rated pilots with premium status
+SkyKraft is a comprehensive Flutter-based mobile application that serves as the ultimate drone pilot aggregator platform. It connects drone pilots with customers, providing a seamless booking experience, real-time location tracking, and comprehensive pilot discovery features.
 
-### 🏆 **Comprehensive Pilot Profiles**
-- **Portfolio Showcase**: View pilot work samples, images, and videos
-- **Certification Verification**: Check pilot licenses, certifications, and insurance
-- **Performance Metrics**: Track completion rates, ratings, and booking history
-- **Equipment Details**: View drone models and technical capabilities
+## ✨ Features
 
-### 📱 **Modern User Experience**
-- **Responsive Design**: Beautiful Material Design 3 interface with dark/light themes
-- **Smooth Animations**: Engaging micro-interactions and transitions
-- **Real-time Updates**: Live location tracking and availability status
-- **Cross-platform**: Works seamlessly on iOS, Android, and Web
+- **🔐 Authentication System**: Secure login and signup with Firebase
+- **🗺️ Interactive Maps**: Mapbox integration for real-time pilot location tracking
+- **👨‍✈️ Pilot Discovery**: Find and connect with drone pilots in your area
+- **📱 Modern UI/UX**: Beautiful, responsive design with dark/light theme support
+- **🌍 Location Services**: GPS integration for accurate pilot positioning
+- **🛒 Shop Integration**: Built-in marketplace for drone-related products
+- **📊 Real-time Updates**: Live data synchronization with Firebase
+- **🎨 Theme Customization**: Dynamic theme switching capabilities
 
-### 🔒 **Trust & Safety**
-- **Verification System**: Verified pilot badges and background checks
-- **Rating & Reviews**: Transparent feedback system for quality assurance
-- **Insurance Coverage**: Pilot insurance information and verification
-- **Secure Booking**: Protected payment processing and booking management
+## 🛠️ Tech Stack
 
-## 🏗️ Architecture
+- **Frontend**: Flutter 3.7.2
+- **Backend**: Firebase (Authentication, Firestore)
+- **Maps**: Mapbox Maps Flutter
+- **State Management**: GetX
+- **Location**: Flutter Location Plugin
+- **UI Components**: Material Design 3, Google Fonts
 
-### **Frontend (Flutter)**
-- **State Management**: GetX for reactive state management
-- **UI Framework**: Material Design 3 with custom theming
-- **Maps Integration**: Mapbox for real-time location services
-- **Responsive Design**: Adaptive layouts for all screen sizes
+## 📱 Screenshots
 
-### **Backend (Firebase)**
-- **Authentication**: Firebase Auth with email/password
-- **Database**: Cloud Firestore for real-time data synchronization
-- **Storage**: Firebase Storage for media files
-- **Hosting**: Firebase Hosting for web deployment
-
-### **Key Services**
-- **PilotService**: Manages pilot data, search, and filtering
-- **AuthController**: Handles user authentication and profiles
-- **LocationService**: Real-time location tracking and updates
-- **BookingService**: Manages booking lifecycle and payments
+*Screenshots will be added here*
 
 ## 🚀 Getting Started
 
-### **Prerequisites**
-- Flutter SDK 3.7.2+
-- Dart 3.0+
-- Firebase project setup
-- Mapbox API key
+### Prerequisites
 
-### **Installation**
+- Flutter SDK 3.7.2 or higher
+- Dart SDK 3.7.2 or higher
+- Android Studio / VS Code
+- iOS Simulator (for iOS development)
+- Android Emulator (for Android development)
+
+### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/skykraft.git
-   cd skykraft
+   git clone https://github.com/yourusername/SkyKraft.git
+   cd SkyKraft
    ```
 
 2. **Install dependencies**
@@ -70,225 +56,70 @@
    ```
 
 3. **Configure Firebase**
-   - Create a Firebase project
+   - Create a new Firebase project
    - Add your `google-services.json` (Android) and `GoogleService-Info.plist` (iOS)
-   - Enable Authentication and Firestore
+   - Update `firebase_options.dart` with your configuration
 
 4. **Configure Mapbox**
    - Get your Mapbox access token
-   - Update the token in `lib/main.dart`
+   - Update the token in your configuration files
 
 5. **Run the app**
    ```bash
    flutter run
    ```
 
-## 📱 App Structure
+## 📁 Project Structure
 
-### **Core Screens**
-- **Splash Screen**: Branded welcome with smooth animations
-- **Map View**: Interactive map showing nearby pilots
-- **Pilot Discovery**: Advanced search and filtering interface
-- **Pilot Profiles**: Comprehensive pilot information and portfolio
-- **Booking System**: Seamless pilot booking and management
-- **User Profile**: Account management and preferences
-
-### **Key Components**
-- **PilotModel**: Comprehensive pilot data structure
-- **PilotService**: Business logic for pilot operations
-- **AppTheme**: Consistent design system and theming
-- **Custom Widgets**: Reusable UI components
+```
+lib/
+├── auth/                 # Authentication screens and controllers
+├── constants/            # App constants and configurations
+├── core/                 # Core app theme and controllers
+├── features/             # Feature-specific modules
+│   ├── auth/            # Authentication features
+│   ├── booking/         # Booking system
+│   ├── map/             # Map functionality
+│   ├── pilot_discovery/ # Pilot discovery features
+│   ├── pilot_profile/   # Pilot profile management
+│   ├── profile/         # User profile management
+│   └── shop/            # Shop/marketplace features
+├── shared/               # Shared models, services, and widgets
+├── services/             # Core services
+└── main.dart            # App entry point
+```
 
 ## 🔧 Configuration
 
-### **Environment Variables**
-```dart
-// Firebase Configuration
-firebase_options.dart
+### Firebase Setup
+1. Create a Firebase project
+2. Enable Authentication and Firestore
+3. Download configuration files
+4. Update `firebase_options.dart`
 
-// Mapbox Configuration
-MAPBOX_ACCESS_TOKEN = 'your_token_here'
+### Mapbox Setup
+1. Create a Mapbox account
+2. Generate an access token
+3. Configure the token in your app
 
-// App Configuration
-APP_NAME = 'SKYKRAFT'
-APP_VERSION = '7.0.0'
-```
+## 📱 Platform Support
 
-### **Customization**
-- **Branding**: Update logos and colors in `assets/` and `lib/core/app_theme.dart`
-- **Features**: Enable/disable features in `lib/constants/app_constants.dart`
-- **Styling**: Modify themes and components in `lib/core/` and `lib/shared/widgets/`
-
-## 📊 Data Models
-
-### **Pilot Model**
-```dart
-class PilotModel {
-  final String uid;
-  final String name;
-  final List<PilotSpecialization> specializations;
-  final PilotCertification certification;
-  final double rating;
-  final double hourlyRate;
-  final bool isVerified;
-  final bool isAvailable;
-  // ... more fields
-}
-```
-
-### **Booking Model**
-```dart
-class BookingModel {
-  final String id;
-  final String pilotId;
-  final String userId;
-  final DateTime dateTime;
-  final BookingStatus status;
-  final double amount;
-  // ... more fields
-}
-```
-
-## 🎨 UI/UX Features
-
-### **Design System**
-- **Color Palette**: Professional blue and teal theme
-- **Typography**: Inter font family for readability
-- **Spacing**: Consistent 8px grid system
-- **Shadows**: Subtle elevation and depth
-
-### **Animations**
-- **Page Transitions**: Smooth fade and slide animations
-- **Micro-interactions**: Hover effects and button states
-- **Loading States**: Skeleton screens and progress indicators
-- **Feedback**: Toast messages and snackbars
-
-## 🔍 Search & Discovery
-
-### **Advanced Filters**
-- **Specialization**: Aerial photography, videography, surveying, etc.
-- **Location**: Radius-based search with real-time updates
-- **Rating**: Minimum rating thresholds
-- **Price**: Hourly rate ranges
-- **Availability**: Online status and booking availability
-- **Verification**: Verified pilot status
-
-### **Smart Sorting**
-- **Relevance**: AI-powered ranking algorithm
-- **Rating**: Highest-rated pilots first
-- **Distance**: Nearest pilots prioritized
-- **Availability**: Available pilots highlighted
-
-## 📍 Location Services
-
-### **Real-time Tracking**
-- **GPS Integration**: Accurate location services
-- **Live Updates**: Real-time pilot location updates
-- **Distance Calculation**: Haversine formula for precise distances
-- **Geofencing**: Location-based notifications
-
-### **Map Features**
-- **Interactive Markers**: Clickable pilot locations
-- **Cluster View**: Grouped markers for better UX
-- **Route Planning**: Directions to pilot locations
-- **Satellite View**: High-resolution aerial imagery
-
-## 💳 Booking System
-
-### **Booking Flow**
-1. **Pilot Selection**: Choose from filtered results
-2. **Date & Time**: Schedule availability
-3. **Requirements**: Specify project details
-4. **Confirmation**: Review and confirm booking
-5. **Payment**: Secure payment processing
-6. **Tracking**: Real-time booking status
-
-### **Payment Integration**
-- **Multiple Methods**: Credit cards, digital wallets
-- **Secure Processing**: PCI-compliant payment gateway
-- **Escrow System**: Protected payments until completion
-- **Refund Policy**: Clear cancellation and refund terms
-
-## 🔐 Security & Privacy
-
-### **Data Protection**
-- **Encryption**: End-to-end data encryption
-- **Authentication**: Secure user authentication
-- **Authorization**: Role-based access control
-- **GDPR Compliance**: Privacy and data protection
-
-### **User Privacy**
-- **Location Sharing**: Opt-in location services
-- **Data Control**: User-managed privacy settings
-- **Secure Storage**: Encrypted local data storage
-- **Anonymous Mode**: Privacy-focused browsing
-
-## 🚀 Performance Optimization
-
-### **Performance Features**
-- **Lazy Loading**: On-demand data loading
-- **Image Optimization**: Compressed and cached images
-- **Background Sync**: Offline capability with sync
-- **Memory Management**: Efficient resource usage
-
-### **Scalability**
-- **Firebase Integration**: Cloud-based scalability
-- **CDN Support**: Global content delivery
-- **Caching Strategy**: Intelligent data caching
-- **Load Balancing**: Distributed server architecture
-
-## 🧪 Testing
-
-### **Test Coverage**
-- **Unit Tests**: Core business logic testing
-- **Widget Tests**: UI component testing
-- **Integration Tests**: End-to-end workflow testing
-- **Performance Tests**: Load and stress testing
-
-### **Quality Assurance**
-- **Code Quality**: Linting and formatting
-- **Error Handling**: Comprehensive error management
-- **Logging**: Detailed application logging
-- **Monitoring**: Performance and error monitoring
-
-## 📈 Analytics & Insights
-
-### **User Analytics**
-- **Usage Patterns**: User behavior analysis
-- **Performance Metrics**: App performance tracking
-- **Error Tracking**: Crash and error reporting
-- **User Feedback**: Rating and review system
-
-### **Business Intelligence**
-- **Booking Trends**: Popular services and times
-- **Pilot Performance**: Success rates and ratings
-- **Revenue Analytics**: Financial performance tracking
-- **Market Insights**: Industry trend analysis
-
-## 🌐 Deployment
-
-### **Platform Support**
-- **iOS**: App Store deployment
-- **Android**: Google Play Store
-- **Web**: Progressive Web App (PWA)
-- **Desktop**: Windows, macOS, Linux support
-
-### **CI/CD Pipeline**
-- **Automated Testing**: Continuous integration
-- **Build Automation**: Automated build process
-- **Deployment**: Automated deployment pipeline
-- **Monitoring**: Production environment monitoring
+- ✅ Android (API 21+)
+- ✅ iOS (12.0+)
+- ✅ Web
+- ✅ macOS
+- ✅ Linux
+- ✅ Windows
 
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-### **Development Setup**
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📄 License
 
@@ -296,20 +127,21 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Flutter Team**: For the amazing framework
-- **Firebase**: For robust backend services
-- **Mapbox**: For location services
-- **Open Source Community**: For valuable contributions
+- Flutter team for the amazing framework
+- Firebase for backend services
+- Mapbox for mapping solutions
+- All contributors and supporters
 
 ## 📞 Support
 
-- **Documentation**: [Wiki](https://github.com/your-username/skykraft/wiki)
-- **Issues**: [GitHub Issues](https://github.com/your-username/skykraft/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/skykraft/discussions)
-- **Email**: support@skykraft.com
+If you have any questions or need support, please:
+
+- Open an issue on GitHub
+- Contact the development team
+- Check our documentation
 
 ---
 
-**SKYKRAFT** - Taking drone services to new heights! 🚁✨
+**Made with ❤️ by the SkyKraft Team**
 
-*Built with ❤️ using Flutter and Firebase*
+*Fly high, connect pilots, build the future of drone services.*

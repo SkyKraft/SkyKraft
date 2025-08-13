@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SKYKRAFT - The World's Premier Drone Pilot Aggregator Platform. Connect with certified drone pilots for aerial photography, inspections, mapping, and more. Real-time location tracking, instant booking, and professional drone services.">
+  <meta name="keywords" content="drone pilots, aerial photography, drone services, UAV operators, aerial inspections, drone mapping, professional drone pilots, drone booking platform">
+  <meta name="author" content="SKYKRAFT">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://skykraft.app/">
+  <meta property="og:title" content="SKYKRAFT - World's Premier Drone Pilot Aggregator">
+  <meta property="og:description" content="Connect with certified drone pilots for professional aerial services. Real-time tracking, instant booking, and premium drone solutions.">
+  <meta property="og:image" content="https://skykraft.app/assets/skykraft_og_image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://skykraft.app/">
+  <meta property="twitter:title" content="SKYKRAFT - World's Premier Drone Pilot Aggregator">
+  <meta property="twitter:description" content="Connect with certified drone pilots for professional aerial services. Real-time tracking, instant booking, and premium drone solutions.">
+  <meta property="twitter:image" content="https://skykraft.app/assets/skykraft_og_image.jpg">
+
+  <!-- PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SKYKRAFT">
+  <meta name="application-name" content="SKYKRAFT">
+  <meta name="theme-color" content="#1976D2">
+  <meta name="msapplication-TileColor" content="#1976D2">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/Icon-192.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="mask-icon" href="icons/Icon-192.png" color="#1976D2">
+
+  <!-- Preconnect to external domains for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.mapbox.com">
+  <link rel="preconnect" href="https://firestore.googleapis.com">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <title>SKYKRAFT - World's Premier Drone Pilot Aggregator Platform</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SKYKRAFT",
+    "description": "The World's Premier Drone Pilot Aggregator Platform",
+    "url": "https://skykraft.app",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "SKYKRAFT",
+      "url": "https://skykraft.app"
+    }
+  }
+  </script>
+
+  <!-- Performance and Analytics -->
+  <script>
+    // Performance monitoring
+    window.addEventListener('load', function() {
+      if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1976D2 0%, #00B8D9 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    z-index: 9999;
+  ">
+    <div style="
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    ">
+      <div style="
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #1976D2, #00B8D9);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+      ">S</div>
+    </div>
+    <h1 style="margin: 0; font-size: 32px; font-weight: 700; margin-bottom: 8px;">SKYKRAFT</h1>
+    <p style="margin: 0; font-size: 18px; opacity: 0.9;">Loading the future of drone services...</p>
+    <div style="
+      margin-top: 32px;
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    "></div>
+  </div>
+
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+    }
+    
+    #loading {
+      transition: opacity 0.5s ease-out;
+    }
+    
+    .fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+
+  <script src="flutter_bootstrap.js" async></script>
+  
+  <script>
+    // Hide loading screen when Flutter is ready
+    window.addEventListener('flutter-first-frame', function() {
+      const loading = document.getElementById('loading');
+      loading.classList.add('fade-out');
+      setTimeout(() => {
+        loading.style.display = 'none';
+      }, 500);
+    });
+  </script>
+</body>
+</html>

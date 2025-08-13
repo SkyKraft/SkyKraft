@@ -1,0 +1,51 @@
+name: skykraft
+description: "SKYKRAFT - The Ultimate Drone Pilot Aggregator Platform"
+publish_to: 'none'
+
+version: 7.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Core UI
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+  
+  # State Management
+  get: ^4.7.2
+  
+  # Firebase Core
+  firebase_core: ^3.15.2
+  firebase_auth: ^5.7.0
+  cloud_firestore: ^5.6.12
+  
+  # Maps & Location
+  mapbox_maps_flutter: ^2.9.1
+  location: ^5.0.3
+  
+  # App Settings
+  app_settings: ^5.1.1
+  
+  # Utilities
+  intl: 0.19.0
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/
+    - assets/pilot_marker.png
+    - assets/skykraft_logo_dark.png
+    - assets/skykraft_logo_white.png

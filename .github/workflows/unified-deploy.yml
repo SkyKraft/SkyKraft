@@ -1,0 +1,122 @@
+name: Unified iOS & Web Deployment
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  # Build and Test
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.3'
+          channel: 'stable'
+          
+      - name: Get dependencies
+        run: flutter pub get
+        
+      - name: Sync versions across platforms
+        run: ./scripts/version_sync.sh
+        
+      - name: Analyze code
+        run: flutter analyze
+        
+      - name: Run tests
+        run: flutter test
+        
+      - name: Build web app
+        run: flutter build web --release
+        
+      - name: Build iOS app (simulator)
+        run: flutter build ios --release --no-codesign
+        
+      - name: Upload web build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: build/web/
+          
+      - name: Upload iOS build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: build/ios/
+
+  # Deploy Web App
+  deploy-web:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Download web artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: web-build
+          path: build/web/
+          
+      - name: Setup Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SSSS_F7F32 }}
+          channelId: live
+          projectId: ssss-f7f32
+          target: skykraft-io
+
+  # Build iOS for Distribution
+  build-ios-distribution:
+    needs: build-and-test
+    runs-on: macos-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.3'
+          channel: 'stable'
+          
+      - name: Get dependencies
+        run: flutter pub get
+        
+      - name: Build iOS for distribution
+        run: |
+          flutter build ios --release
+          cd ios
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -archivePath build/Runner.xcarchive archive
+          xcodebuild -exportArchive -archivePath build/Runner.xcarchive -exportOptionsPlist exportOptions.plist -exportPath build/ios
+          
+      - name: Upload iOS distribution build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-distribution
+          path: ios/build/ios/
+
+  # Version Sync Check
+  version-sync:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Verify version consistency
+        run: |
+          echo "Checking version consistency across platforms..."
+          echo "Flutter version: $(flutter --version | grep -o 'Flutter [0-9.]*')"
+          echo "App version: $(grep 'version:' pubspec.yaml | head -1)"
+          echo "iOS build number: $(grep 'FLUTTER_BUILD_NUMBER' ios/Runner.xcodeproj/project.pbxproj | head -1)"
+          echo "✅ Version sync check completed"

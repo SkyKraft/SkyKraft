@@ -1,0 +1,25 @@
+{
+  "projects": {
+    "default": "ssss-f7f32"
+  },
+  "targets": {
+    "ssss-f7f32": {
+      "hosting": {
+        "ssss-f7f32": [
+          "ssss-f7f32"
+        ],
+        "skykraft-io": [
+          "skykraft-io"
+        ]
+      }
+    },
+    "skykraft-9e532": {
+      "hosting": {
+        "skykraft-io": [
+          "skykraft-9e532"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

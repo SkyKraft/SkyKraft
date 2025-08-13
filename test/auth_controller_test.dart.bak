@@ -1,0 +1,74 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:s/auth/auth_controller.dart';
+import 'auth_controller_test.mocks.dart';
+
+@GenerateMocks([
+  FirebaseAuth,
+  UserCredential,
+  User,
+  FirebaseFirestore,
+  CollectionReference,
+  DocumentReference,
+], customMocks: [
+  MockSpec<CollectionReference<Map<String, dynamic>>>(as: #MockCollectionReferenceMap),
+  MockSpec<DocumentReference<Map<String, dynamic>>>(as: #MockDocumentReferenceMap),
+])
+void main() {
+  group('AuthController', () {
+    late AuthController controller;
+    late MockFirebaseAuth mockAuth;
+    late MockFirebaseFirestore mockFirestore;
+    late MockCollectionReferenceMap mockUsers;
+    late MockDocumentReferenceMap mockDoc;
+    late MockUserCredential mockCredential;
+    late MockUser mockUser;
+
+    setUp(() {
+      mockAuth = MockFirebaseAuth();
+      mockFirestore = MockFirebaseFirestore();
+      mockUsers = MockCollectionReferenceMap();
+      mockDoc = MockDocumentReferenceMap();
+      mockCredential = MockUserCredential();
+      mockUser = MockUser();
+      controller = AuthController(auth: mockAuth, firestore: mockFirestore);
+      controller.firebaseUser.value = null;
+      when(mockUser.uid).thenReturn('testuid');
+      when(mockUser.email).thenReturn('test@test.com');
+      when(mockUser.photoURL).thenReturn(null);
+      when(mockFirestore.collection('users')).thenReturn(mockUsers);
+      when(mockUsers.doc('testuid')).thenReturn(mockDoc);
+    });
+
+    test('signInWithEmail returns user on success', () async {
+      when(mockAuth.signInWithEmailAndPassword(email: anyNamed('email'), password: anyNamed('password')))
+        .thenAnswer((_) async => mockCredential);
+      when(mockCredential.user).thenReturn(mockUser);
+      controller = AuthController(auth: mockAuth, firestore: mockFirestore);
+      controller.firebaseUser.value = mockUser;
+      final user = await controller.signInWithEmail('test@test.com', 'password');
+      expect(user, mockUser);
+    });
+
+    test('signUpWithEmail returns user on success', () async {
+      when(mockAuth.createUserWithEmailAndPassword(email: anyNamed('email'), password: anyNamed('password')))
+        .thenAnswer((_) async => mockCredential);
+      when(mockCredential.user).thenReturn(mockUser);
+      controller = AuthController(auth: mockAuth, firestore: mockFirestore);
+      controller.firebaseUser.value = mockUser;
+      final user = await controller.signUpWithEmail('Test', 'test@test.com', 'password', 'pilot');
+      expect(user, mockUser);
+    });
+
+    test('createUserProfile writes to Firestore', () async {
+      when(mockFirestore.collection('users')).thenReturn(mockUsers);
+      when(mockUsers.doc('testuid')).thenReturn(mockDoc);
+      when(mockDoc.set(any, any)).thenAnswer((_) async => {});
+      await controller.createUserProfile(mockUser, 'Test', 'pilot');
+      verify(mockDoc.set(any, any)).called(1);
+    });
+  });
+} 

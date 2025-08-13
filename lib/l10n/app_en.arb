@@ -1,0 +1,18 @@
+{
+  "appTitle": "Skykraft",
+  "login": "Login",
+  "signUp": "Sign Up",
+  "logout": "Logout",
+  "deleteAccount": "Delete Account",
+  "profile": "Profile",
+  "map": "Map",
+  "shop": "Shop",
+  "skycoinsWallet": "Skycoins Wallet",
+  "yourSkycoinsBalance": "Your Skycoins Balance",
+  "conversionRate": "1 Skycoin = ₹1",
+  "addToCart": "Add to Cart",
+  "noProducts": "No products available",
+  "pilotMap": "Pilot Map",
+  "locationPermissionRequired": "Location permission required",
+  "back": "Back"
+} 
